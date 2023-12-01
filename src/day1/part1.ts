@@ -1,10 +1,10 @@
 import * as fs from "fs";
 
-const getFirstAndLastDigit = (string: string) => {
+export const getFirstAndLastDigit_1 = (string: string) => {
   var regex = /\d+/g;
   var matches = string.match(regex);
   let numbers = matches?.toString().split(",");
-  console.log(`reading ${string}, result is: ${numbers}`);
+  //   console.log(`reading ${string}, result is: ${numbers}`);
   let results = 0;
   if (numbers) {
     let firstNumber = numbers[0];
@@ -17,12 +17,4 @@ const getFirstAndLastDigit = (string: string) => {
   }
 
   return results;
-};
-
-export const getPart1Sum = () => {
-  let input = fs.readFileSync(`${__dirname}/input.md`, "utf8");
-  let stringArr = input.trim().split(`\r`);
-  let numArr = stringArr.map(getFirstAndLastDigit);
-
-  return numArr.reduce((x, y) => x + y, 0);
 };
