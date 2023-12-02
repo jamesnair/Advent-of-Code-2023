@@ -29,14 +29,37 @@ var Small: Record<string, number> = {
   ninety: 90,
 };
 
+/** Return a list of indices of the seacrhedString inside 'string' */
+function getIndicesOf(searchedString: string, string: string) {
+  var index = 0;
+  var startIndex = 0;
+  var indices: number[] = [];
+  while ((index = string.indexOf(searchedString, startIndex)) > -1) {
+    indices.push(index);
+    startIndex = index + searchedString.length;
+  }
+
+  return indices;
+}
+
 /** Returns an array of string that spell out a number, sorted by order of appearance */
 function text2num(str: string) {
   let filters = Object.keys(Small).filter((s) => str.includes(s));
-  filters.sort((a, b) => str.indexOf(a) - str.indexOf(b)); //sort the text string to order of appearance
-  return filters;
+  let dict: Record<string, string> = {};
+  filters.map((value) => {
+    let indices = getIndicesOf(value, str);
+    indices.forEach((index) => {
+      //create a dictionary with each occurrence value
+      dict[index] = value;
+    });
+  });
+
+  let textNumbers = Object.keys(dict).map((key) => dict[key]);
+  //   console.log("my dict is", dict, "my text array is", textNumbers);
+  return textNumbers;
 }
 
-export function getFirstAndLastDigit_2(string: string) {
+export function getFirstAndLastDigit_2(string: string, index: number) {
   string = string.trim(); //trim whitespace
   var regex = /\d+/g;
   var matches = string.match(regex);
@@ -81,7 +104,11 @@ export function getFirstAndLastDigit_2(string: string) {
       : Small[textArr[textArr.length - 1]]
           .toString()
           .charAt(Small[textArr[textArr.length - 1]].toString().length - 1); //convert to string and get last digit
-  console.log(`reading ${string}, number should be ${firstItem}${lastItem}`);
+  console.log(
+    `${
+      index + 1
+    }. Reading ${string}, number should be ${firstItem}${lastItem}, text array: ${textArr}`
+  );
   results = parseInt(`${firstItem}${lastItem}`); //combine to create the number
 
   return results;
