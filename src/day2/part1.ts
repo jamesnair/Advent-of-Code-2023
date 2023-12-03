@@ -1,4 +1,10 @@
-import { getMarblesForSet, Bag } from "./helpers";
+import { Color, getMarblesForSet } from "./helpers";
+
+export const Bag: Record<Color, number> = {
+  red: 12,
+  blue: 14,
+  green: 13,
+};
 
 export function computeGame(gameString: string) {
   let stringArr = gameString.split(":");

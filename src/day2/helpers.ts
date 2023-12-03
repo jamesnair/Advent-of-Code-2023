@@ -1,11 +1,5 @@
 export const colors = ["red", "blue", "green"] as const;
-type Color = (typeof colors)[number];
-
-export const Bag: Record<Color, number> = {
-  red: 12,
-  blue: 14,
-  green: 13,
-};
+export type Color = (typeof colors)[number];
 
 export const getMarblesForSet = (set: string): Record<Color, number> => {
   let dict: Record<Color, number> = {
