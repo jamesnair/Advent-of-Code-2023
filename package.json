@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "start": "npm run build && node ./lib/day1/index.js"
+    "start-day-1": "npm run build && node ./lib/day1/index.js",
+    "start-day-2": "npm run build && node ./lib/day2/index.js"
   },
   "keywords": [],
   "author": "",
