@@ -6,7 +6,11 @@ function getIndicesOf(searchedString: string, string: string) {
   var index = 0;
   var startIndex = 0;
   var indices: number[] = [];
-  while ((index = string.indexOf(searchedString, startIndex)) > -1) {
+  while (
+    (index = string.indexOf(searchedString, startIndex)) > -1 &&
+    isNaN(parseInt(string.charAt(index - 1))) &&
+    isNaN(parseInt(string.charAt(index + searchedString.length)))
+  ) {
     indices.push(index);
     startIndex = index + searchedString.length;
   }
