@@ -5,5 +5,5 @@ let input = fs.readFileSync(`${__dirname}/input.txt`, "utf8");
 let rows = input.split(`\r`).map((r) => r.trim());
 
 let parts = getPartNumbers(rows);
-let result_1 = parts.reduce((x, y) => x + y);
+let result_1 = parts.reduce((x, y) => x + y, 0);
 console.log("result for part 1 is", result_1);
